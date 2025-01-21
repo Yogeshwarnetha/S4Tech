@@ -1,11 +1,69 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { contactFormData } from "../../api-request/contact";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    subject: "",
+    message: "",
+  });
+
+  const [formStatus, setFormStatus] = useState({ success: false, message: "" });
+  const [isLoading, setIsLoading] = useState(false);
+
   const contactInfo = [
-    { icon: <Phone className="w-6 h-6" />, title: 'Call Us', info: '+1 (309) 660-3261' },
-    { icon: <Mail className="w-6 h-6" />, title: 'Email Us', info: 'info@s4tech.com' },
-    { icon: <MapPin className="w-6 h-6" />, title: 'Visit Us', info: '4901 Whisper Drive Parker, TX 75002' }
+    { icon: <Phone className="w-6 h-6" />, title: "Call Us", info: "+1 (309) 660-3261" },
+    { icon: <Mail className="w-6 h-6" />, title: "Email Us", info: "info@s4tech.com" },
+    { icon: <MapPin className="w-6 h-6" />, title: "Visit Us", info: "4901 Whisper Drive Parker, TX 75002" },
   ];
+
+  const handleInputChange = (e:any) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+
+    if (!formData.first_name || !formData.email || !formData.message) {
+      setFormStatus({
+        success: false,
+        message: "Please fill in all required fields.",
+      });
+      return;
+    }
+
+    setFormStatus({ success: false, message: "" });
+    setIsLoading(true);
+
+    try {
+      const response = await contactFormData(formData);
+      if (response?.success) {
+        setFormStatus({ success: true, message: response.message || "Message sent successfully!" });
+      } else {
+        setFormStatus({ success: false, message: response.message || "An error occurred. Please try again." });
+      }
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone_number: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error:any) {
+      setFormStatus({
+        success: false,
+        message: error.message || "Failed to send message. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -18,7 +76,6 @@ const ContactUs = () => {
               We're here to help you transform your business with innovative IT solutions.
             </p>
           </div>
-          
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {contactInfo.map((item, index) => (
               <div key={index} className="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
@@ -40,83 +97,94 @@ const ContactUs = () => {
             <p className="text-gray-600 mb-8">
               Have a question or want to learn more about our services? Fill out the form below and our team will get back to you as soon as possible.
             </p>
-            <form className="space-y-6">
+
+            {formStatus.message && (
+              <p
+                className={`mb-4 text-sm ${
+                  formStatus.success ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                {formStatus.message}
+              </p>
+            )}
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {/* Form Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                    First Name
-                  </label>
+                  <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">First Name</label>
                   <input
                     type="text"
-                    id="firstName"
+                    id="first_name"
+                    value={formData.first_name}
+                    onChange={handleInputChange}
                     className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                    Last Name
-                  </label>
+                  <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">Last Name</label>
                   <input
                     type="text"
-                    id="lastName"
+                    id="last_name"
+                    value={formData.last_name}
+                    onChange={handleInputChange}
                     className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                   />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
+                </div>
+                <div>
+                  <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone_number"
+                    value={formData.phone_number}
+                    onChange={handleInputChange}
+                    className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                   />
+                </div>
               </div>
-              </div>
-
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
-                  Subject
-                </label>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700">Subject</label>
                 <input
                   type="text"
                   id="subject"
-                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 px-2 focus:border-none focus:outline-none"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                  Message
-                </label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
                 <textarea
                   id="message"
                   rows={6}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 focus:border-none focus:outline-none p-2"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                 ></textarea>
               </div>
 
               <div>
                 <button
                   type="submit"
-                  className="w-full bg-[#E31937] text-white py-3 px-6 rounded-md hover:bg-red-700 transition-colors duration-200"
+                  className="w-full bg-[#E31937] text-white py-3 px-6 rounded-md hover:bg-red-700"
+                  disabled={isLoading}
                 >
-                  Send Message
+                  {isLoading ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
@@ -136,7 +204,6 @@ const ContactUs = () => {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>

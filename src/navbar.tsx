@@ -30,6 +30,10 @@ const menuItems = [
     path: '/blogs'
   },
   {
+    title: 'Careers',
+    path: '/careers'
+  },
+  {
     title: 'Contact Us',
     path: '/contact'
   }

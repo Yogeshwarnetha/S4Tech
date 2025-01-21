@@ -13,35 +13,14 @@ import {
 } from "@mui/material";
 import { MdDelete, MdEdit } from "react-icons/md";
 import AdminDashboardLayout from "..";
-
-// Dummy data for testing
-const dummySubmissions = [
-  {
-    id: "1",
-    fullName: "John Doe",
-    email: "john.doe@example.com",
-    message: "I have an inquiry about your services.",
-    createdAt: "2024-12-10",
-  },
-  {
-    id: "2",
-    fullName: "Jane Smith",
-    email: "jane.smith@example.com",
-    message: "Could you provide more details about the pricing?",
-    createdAt: "2024-12-12",
-  },
-  {
-    id: "3",
-    fullName: "David Johnson",
-    email: "david.johnson@example.com",
-    message: "I'm interested in a collaboration.",
-    createdAt: "2024-12-14",
-  },
-];
+import { fetchPaginatedcontactFormData } from "../../../api-request/contact";
 
 interface ContactForm {
   id: string;
-  fullName: string;
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  subject: string;
   email: string;
   message: string;
   createdAt: string;
@@ -50,16 +29,27 @@ interface ContactForm {
 const ContactUsDashboard = () => {
   const [submissions, setSubmissions] = useState<ContactForm[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null); // to handle API errors
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [count] = useState(3);
+  const [count, setCount] = useState<number>(0); // set the total count from the API response
 
   useEffect(() => {
-    setTimeout(() => {
-      setSubmissions(dummySubmissions);
-      setLoading(false);
-    }, 2000);
-  }, []);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetchPaginatedcontactFormData(page, limit);
+        setSubmissions(response.data.data); // assuming data is in the 'data' field
+        setCount(response.data.totalCount); // set the total count of submissions
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to load data.");
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [page, limit]);
 
   const handleChangePage = (
     _: React.MouseEvent<HTMLButtonElement> | null,
@@ -77,10 +67,13 @@ const ContactUsDashboard = () => {
   const Child = ({ data }: { data: ContactForm }) => (
     <TableRow key={data.id}>
       <TableCell sx={{ fontFamily: "Poppins", fontSize: 14 }}>
-        {data.fullName}
+        {data.first_name} {data.last_name}
       </TableCell>
       <TableCell sx={{ fontFamily: "Poppins", fontSize: 14 }}>
         {data.email}
+      </TableCell>
+      <TableCell sx={{ fontFamily: "Poppins", fontSize: 14 }}>
+        {data.subject}
       </TableCell>
       <TableCell sx={{ fontFamily: "Poppins", fontSize: 14 }}>
         {data.message}
@@ -130,6 +123,8 @@ const ContactUsDashboard = () => {
                   ))}
                 </TableBody>
               </Table>
+            ) : error ? (
+              <Typography color="error">{error}</Typography>
             ) : (
               <Table>
                 <TableHead>
@@ -151,6 +146,15 @@ const ContactUsDashboard = () => {
                       }}
                     >
                       Email
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        fontWeight: 700,
+                        fontSize: 16,
+                        fontFamily: "Jost",
+                      }}
+                    >
+                      Subject
                     </TableCell>
                     <TableCell
                       sx={{
