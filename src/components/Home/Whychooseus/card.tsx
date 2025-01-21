@@ -19,7 +19,7 @@ export function FeatureCard({ icon: Icon, title, description, delay }: FeatureCa
     >
       <div className="relative mb-6">
         <div className="w-14 h-14 bg-red-50 rounded-lg absolute -top-2 -left-2 group-hover:scale-110 transition-transform duration-300" />
-        <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-lg relative z-10 
+        <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-[#E31937] rounded-lg relative z-10 
           flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
           <Icon className="text-white" size={24} />
         </div>

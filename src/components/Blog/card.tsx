@@ -29,13 +29,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
         <div className="absolute top-4 left-4">
-          <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-[#E31937] text-white px-3 py-1 rounded-full text-sm font-medium">
             {category}
           </span>
         </div>
       </div>
       <div className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 hover:text-red-600">
+        <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 hover:text-[#E31937]">
           {title}
         </h2>
         <p className="text-gray-600 mb-4 line-clamp-3">{excerpt}</p>

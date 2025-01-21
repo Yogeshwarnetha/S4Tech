@@ -12,27 +12,32 @@ const services = [
   {
     title: 'Web Development',
     description: 'Crafting exceptional web applications with cutting-edge technologies and industry best practices.',
-    icon: Code2
+    icon: Code2,
+    path: '/services/web-mobile-app'
   },
   {
     title: 'UI/UX Design',
     description: 'Creating stunning, intuitive interfaces that deliver memorable user experiences.',
-    icon: Palette
+    icon: Palette,
+    path: '/services/ui-ux-brandservice'
   },
   {
     title: 'Digital Marketing',
     description: 'Strategic, data-driven campaigns that amplify your brand and drive measurable results.',
-    icon: LineChart
+    icon: LineChart,
+    path: '/services/digital-marketing'
   },
   {
     title: 'Global Solutions',
     description: 'Scalable, international solutions adapted for diverse markets and cultures.',
-    icon: Globe2
+    icon: Globe2,
+    path: '/services/it-management-service'
   },
   {
     title: 'Cybersecurity',
     description: 'Robust security solutions protecting your digital assets and customer data.',
-    icon: Shield
+    icon: Shield,
+    path: '/services/cyber-security'
   },
   {
     title: 'Consultation',
@@ -73,7 +78,7 @@ export function ServicesCarousel() {
           >
             {services.map((service, index) => (
               <SwiperSlide key={index}>
-                <ServiceCard {...service} />
+                <ServiceCard title={service.title} description={service.description} icon={service.icon} path={service.path || ''} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -8,7 +8,9 @@ import {
   Mail,
   Phone,
   MapPin,
-  LucideIcon
+  LucideIcon,
+  Zap,
+  CheckCircle
 } from 'lucide-react';
 
 interface ServiceCardProps {
@@ -29,9 +31,19 @@ const services = [
     Icon: Megaphone
   },
   {
+    title: 'QA & Testing Services',
+    description: 'Ensuring flawless performance and reliability through rigorous quality assurance and testing.',
+    Icon: CheckCircle
+  },
+  {
     title: 'Cyber Security Solutions',
     description: 'Comprehensive security measures to protect your digital assets and maintain data integrity.',
     Icon: Shield
+  },
+  {
+    title: 'AI & ML Services',
+    description: 'Empowering businesses with intelligent AI and ML solutions for automation, innovation, and data-driven decision-making',
+    Icon: Zap
   },
   {
     title: 'Data Tracking Security',
@@ -61,7 +73,7 @@ function ServiceCard({ title, description, Icon }: ServiceCardProps) {
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="bg-red-100 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
-        <Icon className="text-red-600" size={24} />
+        <Icon className="text-[#E31937]" size={24} />
       </div>
       <h3 className="text-xl font-semibold mb-3 text-gray-800">{title}</h3>
       <p className="text-gray-600">{description}</p>
@@ -73,7 +85,7 @@ const Services = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-red-900 to-red-500 text-white py-24">
+      <section className="bg-gradient-to-r from-[#E31937] to-red-500 text-white py-24">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center text-center">
             {/* <Server size={48} className="mb-6 animate-pulse" /> */}
@@ -82,7 +94,7 @@ const Services = () => {
               Empowering businesses with cutting-edge technology solutions for a digital future.
               Transform, innovate, and grow with our comprehensive IT services.
             </p>
-            <button className="bg-white text-red-900 px-8 py-3 rounded-full font-semibold 
+            <button className="bg-white text-[#E31937] px-8 py-3 rounded-full font-semibold 
               hover:bg-red-50 transition duration-300">
               Get Started
             </button>
@@ -113,7 +125,7 @@ const Services = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-red-900 text-white py-16">
+      <section className="bg-[#E31937] text-white py-16">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat) => (
@@ -137,19 +149,20 @@ const Services = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
-              <Mail className="mx-auto text-red-600 mb-4" size={32} />
+              <Mail className="mx-auto text-[#E31937] mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Email Us</h3>
               <p className="text-gray-600">contact@s4tech.com</p>
             </div>
             <div className="text-center p-6">
-              <Phone className="mx-auto text-red-600 mb-4" size={32} />
+              <Phone className="mx-auto text-[#E31937] mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Call Us</h3>
               <p className="text-gray-600">+1 (555) 123-4567</p>
             </div>
             <div className="text-center p-6">
-              <MapPin className="mx-auto text-red-600 mb-4" size={32} />
+              <MapPin className="mx-auto text-[#E31937] mb-4" size={32} />
               <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
-              <p className="text-gray-600">123 Tech Street, Silicon Valley, CA</p>
+              <p className="text-gray-600">4901 Whisper Drive
+Parker, TX 75002</p>
             </div>
           </div>
         </div>

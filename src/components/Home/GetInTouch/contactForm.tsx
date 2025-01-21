@@ -25,17 +25,17 @@ export function ContactInfo() {
       <ContactItem
         icon={<MapPin size={24} />}
         title="Location"
-        content="123 Business Avenue, Silicon Valley, CA 94025"
+        content="4901 Whisper Drive Parker, TX 75002"
       />
       <ContactItem
         icon={<Phone size={24} />}
         title="Phone"
-        content="+1 (555) 123-4567"
+        content="+1 (309) 660-3261"
       />
       <ContactItem
         icon={<Mail size={24} />}
         title="Email"
-        content="contact@s4tech.com"
+        content="info@s4tech.com"
       />
       <ContactItem
         icon={<Clock size={24} />}

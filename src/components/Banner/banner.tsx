@@ -14,9 +14,9 @@ const Banner = () => {
       </div>
 
       {/* Content */}
-      <div className="relative min-h-[90vh] flex items-center">
+      <div className="relative min-h-[90vh] flex items-center ">
         <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="max-w-4xl mx-auto text-center mb-16 mt-12">
             <h1 className="text-4xl sm:text-6xl font-bold text-black mb-8 leading-tight">
               <span className="inline-block animate-fadeIn">Innovate.</span>{' '}
               <span className="inline-block animate-fadeIn animation-delay-200">Transform.</span>{' '}

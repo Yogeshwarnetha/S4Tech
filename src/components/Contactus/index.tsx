@@ -2,15 +2,15 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 const ContactUs = () => {
   const contactInfo = [
-    { icon: <Phone className="w-6 h-6" />, title: 'Call Us', info: '+1 (555) 123-4567' },
-    { icon: <Mail className="w-6 h-6" />, title: 'Email Us', info: 'contact@s4tech.com' },
-    { icon: <MapPin className="w-6 h-6" />, title: 'Visit Us', info: '123 Tech Street, Silicon Valley, CA' }
+    { icon: <Phone className="w-6 h-6" />, title: 'Call Us', info: '+1 (309) 660-3261' },
+    { icon: <Mail className="w-6 h-6" />, title: 'Email Us', info: 'info@s4tech.com' },
+    { icon: <MapPin className="w-6 h-6" />, title: 'Visit Us', info: '4901 Whisper Drive Parker, TX 75002' }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-red-900 to-red-500 text-white py-24">
+      <div className="bg-gradient-to-r from-[#E31937] to-[#E31937] text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 py-14">Get in Touch</h1>
@@ -49,7 +49,7 @@ const ContactUs = () => {
                   <input
                     type="text"
                     id="firstName"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                    className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                   />
                 </div>
                 <div>
@@ -59,11 +59,12 @@ const ContactUs = () => {
                   <input
                     type="text"
                     id="lastName"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                    className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
                   />
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                   Email
@@ -71,8 +72,8 @@ const ContactUs = () => {
                 <input
                   type="email"
                   id="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                />
+                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
+                  />
               </div>
 
               <div>
@@ -82,9 +83,11 @@ const ContactUs = () => {
                 <input
                   type="tel"
                   id="phone"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                />
+                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 focus:border-none focus:outline-none"
+                  />
               </div>
+              </div>
+
 
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
@@ -93,7 +96,7 @@ const ContactUs = () => {
                 <input
                   type="text"
                   id="subject"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                  className="mt-1 block w-full border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-2 px-2 focus:border-none focus:outline-none"
                 />
               </div>
 
@@ -104,14 +107,14 @@ const ContactUs = () => {
                 <textarea
                   id="message"
                   rows={6}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 focus:border-none focus:outline-none p-2"
                 ></textarea>
               </div>
 
               <div>
                 <button
                   type="submit"
-                  className="w-full bg-red-600 text-white py-3 px-6 rounded-md hover:bg-red-700 transition-colors duration-200"
+                  className="w-full bg-[#E31937] text-white py-3 px-6 rounded-md hover:bg-red-700 transition-colors duration-200"
                 >
                   Send Message
                 </button>
@@ -127,7 +130,7 @@ const ContactUs = () => {
             </p>
             <div className="rounded-lg overflow-hidden shadow-lg h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101459.59325762714!2d-122.18118785!3d37.4040875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb7495bec0189%3A0x7c17d44a466baf9b!2sSilicon%20Valley%2C%20CA!5e0!3m2!1sen!2sus!4v1709871234567!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3343.0739224071294!2d-96.6368648700702!3d33.08083977066154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c1a760fa31201%3A0x2e835fb3b8c50af!2s4901%20Whisper%20Dr%2C%20Parker%2C%20TX%2075002%2C%20USA!5e0!3m2!1sen!2sin!4v1737486317842!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

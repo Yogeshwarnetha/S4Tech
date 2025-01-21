@@ -2,7 +2,7 @@
 
 const BlogHero = () => {
   return (
-    <div className="bg-gradient-to-r from-red-900 to-red-500 text-white py-24">
+    <div className="bg-gradient-to-r from-[#E31937] to-[#E31937] text-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
          

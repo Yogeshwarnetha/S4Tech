@@ -51,7 +51,7 @@ export function WhyChooseUs() {
           }}
         >
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Choose Us</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-red-500 to-[#E31937] mx-auto mb-8"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
             Experience excellence through our commitment to innovation, quality, and customer satisfaction.
             Here's what sets us apart from the rest.

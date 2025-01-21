@@ -50,7 +50,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-red-900 to-red-400 text-white py-24">
+      <div className="relative bg-gradient-to-r from-[#E31937] to-[#E31937] text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 py-14">Transforming Businesses Through Technology</h1>
@@ -81,7 +81,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <div className="flex items-center mb-6">
-                <Lightbulb className="w-8 h-8 text-red-600 mr-4" />
+                <Lightbulb className="w-8 h-8 text-[#E31937] mr-4" />
                 <h2 className="text-2xl font-bold text-gray-800">Our Mission</h2>
               </div>
               <p className="text-gray-600 leading-relaxed">
@@ -91,7 +91,7 @@ const AboutUs = () => {
             
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <div className="flex items-center mb-6">
-                <Compass className="w-8 h-8 text-red-600 mr-4" />
+                <Compass className="w-8 h-8 text-[#E31937] mr-4" />
                 <h2 className="text-2xl font-bold text-gray-800">Our Vision</h2>
               </div>
               <p className="text-gray-600 leading-relaxed">
@@ -115,7 +115,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg">
-                <div className="text-red-600 mb-4">{value.icon}</div>
+                <div className="text-[#E31937] mb-4">{value.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
               </div>

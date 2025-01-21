@@ -88,7 +88,7 @@ const BlogList = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                 selectedCategory === category
-                  ? 'bg-red-600 text-white'
+                  ? 'bg-[#E31937] text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
               }`}
             >
@@ -106,7 +106,7 @@ const BlogList = () => {
 
         {/* Load More Button */}
         <div className="text-center mt-12">
-          <button className="bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700 transition-colors duration-200">
+          <button className="bg-[#E31937] text-white px-6 py-3 rounded-md hover:bg-red-700 transition-colors duration-200">
             Load More Articles
           </button>
         </div>

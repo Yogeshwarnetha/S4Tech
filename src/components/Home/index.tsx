@@ -24,7 +24,7 @@ const Home = () => {
           {/* Right side - Content */}
           <div className="w-full md:w-1/2 space-y-6">
             <h2 className="text-3xl font-bold text-gray-800">About Us</h2>
-            <div className="w-20 h-1 bg-red-600"></div>
+            <div className="w-20 h-1 bg-[#E31937]"></div>
             <p className="text-gray-600 leading-relaxed">
               We're a forward-thinking company dedicated to transforming ideas into reality. 
               With years of experience and a passion for innovation, we help businesses 
@@ -32,8 +32,8 @@ const Home = () => {
               expertise.
             </p>
             <button 
-              onClick={() => window.location.href = '/about'}
-              className="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg
+              onClick={() => window.location.href = '/aboutus'}
+              className="inline-flex items-center px-6 py-3 bg-[#E31937] text-white rounded-lg
                 hover:bg-red-700 transition-colors duration-200 group"
             >
               Learn More
